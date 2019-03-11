@@ -1,0 +1,7 @@
+(defun arbore(L n)
+	(cond
+		((and (atom (car L)) (equal (mod n 2) 1)) (1))
+		((and (atom (car L)) (equal (mod n 2) 0)) (0))
+		((T) (apply '+ '(mapcar (lambda(x) (arbore L (+ n 1))) L))
+	)
+)

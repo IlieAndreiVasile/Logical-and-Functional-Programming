@@ -1,0 +1,30 @@
+;a) Write a function that merges two sorted linear lists and keeps double values.
+
+;merge([a1,...,an] [b1,...,bm])
+;               - B, if n = 0
+;               - A, if m = 0
+;               - a1 U merge([a2,...,an] [b1,...,bm]), if a1 < b1
+;               - b1 U mrge([a1,...,an] [b2,...,bm]), if b1 < a1
+;               - a1 U merge([a2,...,an] [b1,...,bm]), if a1 = b1
+
+(DEFUN merg(l1 l2)
+(COND
+         ((null l1) l2)
+         ((null l2) l1)
+         ((< (car l1) (car l2)) (cons (car l1) (merg (cdr l1) l2)))
+         ((> (car l1) (car l2)) (cons (car l2) (merg l1 (cdr l2))))
+         ((equal (car l1) (car l2)) (cons (car l1) (merg (cdr l1) l2)))
+)
+)
+
+;(merg(list 1 2 3 5 7 9) (list 2 4 6 8))
+;(merg(list 1 2 3 5) (list 1 2 4 5 7))
+
+
+(DEFUN testA()
+	(assert (equal (merg '(1 2 3 5) '(1 2 4 5 7)) '(1 1 2 2 3 4 5 5 7) ) )
+        (assert (equal (merg '(4 6) '(3 4 5 6)) '(3 4 4 5 6 6)))
+        (assert (equal (merg '(7 9 10) '(3 4 5)) '(3 4 5 7 9 10)))
+)
+
+

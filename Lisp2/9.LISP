@@ -1,0 +1,17 @@
+(defun rightSon (L C)
+	(cond
+		((numberp (car L)) (rightSon (cdr L) (+ C (car L))))
+		((and (atom (car L)) (= C 0)) L)
+		(T (rightSon (cdr L) (- C 1)))
+	)
+)
+
+
+
+(defun convert (L)
+	(cond 
+		((= (cadr L) 0) (list (car L)))
+		((= (cadr L) 1) (cons (car L) (list (convert (cddr L)))))
+		(T	(cons (car L) (cons (convert (cddr L)) (list (convert (rightSon (cddr L) 1))))))
+	)
+)

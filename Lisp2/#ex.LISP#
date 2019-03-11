@@ -1,0 +1,16 @@
+(defun findRightSon(l cnt)
+  (cond
+    ((and (not (numberp (car l))) (equal cnt 0)) l)
+    ((not (numberp (car l))) (findRightSon (cdr l) (- cnt 1)))
+    (T (findRightSon (cdr l) (+ cnt (car l))))
+  )
+)
+
+(defun tests()
+(cond
+((not (equal (findRightSon '(A 2 B 0 C 2 D 0 E 0) '0) '(A 2 B 0 C 2 D 0 E 0))) nil)
+((not (equal (findRightSon '(A 2 B 0 C 2 D 0 E 0) '1) nil)) nil)
+((not (equal (findRightSon '(A 2 B 0 C 2 D 0 E 0) '2) nil)) nil)
+(t t)
+)
+)

@@ -1,0 +1,13 @@
+;2. Return the list of nodes on the k-th level of a tree of type (1).
+
+(DEFUN klevel(L c k)
+(COND
+     ((and (not(numberp (car L))) (equal k (c))) (cons (car L) (klevel(cdr (cdr L)) c k))) 
+)
+)
+
+(DEFUN test()
+(COND
+   ((not (equal (klevel '(A 2 B 0 C 2 D 0 E 0) 1 1) '(A))) nil)
+)
+)

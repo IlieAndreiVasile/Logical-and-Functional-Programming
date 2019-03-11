@@ -1,0 +1,9 @@
+;c) Write a function to determines the sum of two numbers in list representation, and returns the
+;   corresponding decimal number, without transforming the representation of the number from list to
+;   number.
+
+(DEFUN sum(l1 l2)
+(COND
+      
+)
+)

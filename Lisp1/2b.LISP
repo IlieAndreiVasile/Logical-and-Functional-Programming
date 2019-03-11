@@ -1,0 +1,6 @@
+(defun depthList (N)
+	(cond
+		((atom N) 0)
+		(T (+ 1 (apply #'max (mapcar #'depthList N))))
+	)
+)
