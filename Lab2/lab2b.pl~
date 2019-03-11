@@ -1,0 +1,26 @@
+%Define a predicate to determine the greatest common divisor of all numbers from a
+%list
+
+% gcd(A-a nubmer, B-a number, R-the greatest common divisor of the 2
+% numbers
+% flow model (i,i,i), (i,i,o)
+gcd(X, 0, X):- !.
+gcd(0, X, X):- !.
+gcd(X, Y, D):- X > Y, !, Z is X mod Y, gcd(Y, Z, D).
+gcd(X, Y, D):- Z is Y mod X, gcd(X, Z, D).
+
+
+% gcdl(L-list of elements, R-the greatest common divisor of all numbers
+% from the list)
+% flow model (i,i), (i,o)
+gcdl([], _).
+gcdl([H|T], R):-
+    R = [],
+    R is H,
+    gcdl(T, R).
+
+gcdl([H|T], R):-
+    R \= [],
+    gcd(R, H, G),
+    R is G,
+    gcdl(T, R).
